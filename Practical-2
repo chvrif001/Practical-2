@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+//THIS PROGRAM WILL CONVERT ANY DECIMAL VALUE TO ANY BASE
+//Authors: Chavalala Rifuwo
+//         Sipho Dludlu
+
+char* Dec2RadixN(int decValue, int radValue, int size, char* str){
+char* ans = malloc(sizeof(char) * 100);  //Allocate a block of memory with the size of char*
+int x = 0;
+int value;
+int remainder;
+value = decValue;
+
+while(value > 0)
+{
+    remainder = value % radValue;  //Use the modulo function to get the remainder
+
+    if(remainder >= 0 && remainder <= 9)
+    {
+        ans[x] = remainder + '0';
+    }
+
+    if(remainder >= 10 && remainder < 16)
+    {
+        ans[x] = remainder +'A' - 10;
+    }
+
+    x++;
+    value = value/radValue;
+}
+
+ans[x] = '\0';
+
+//For final output reverse the string
+int length = x;
+x = 0;
+char l = 0;
+
+while(x < length/2)
+{
+    l = ans[x];
+    ans[x] = ans[length - x - 1];
+    ans[length - x - 1] = l;
+    x++;
+}
+
+return ans;
+
+}
+
+int main(){
+
+printf("******************************\n");
+printf("DECIMAL TO RADIX-i conveter\n");
+printf("Written by: Chavalala Rifuwo\n");
+printf("          : Sipho Dludlu\n");
+printf("Date: 2022\n");
+printf("******************************\n");
+
+
+int number = 0;
+double answer = 0;
+int radix = 0;
+int exit = 0;
+char stri = NULL ;
+int siz = 0;
+
+while(exit != 1){
+
+    printf("Enter a decimal number: ");
+    scanf("%d", &number);
+
+    if(number < 0)
+    {   break;
+    }
+
+    printf("The number you have entered is %d\n", number);
+
+
+    printf("Enter a radix for the converter between 2 and 16: ");
+    scanf("%d", &radix);
+
+
+
+    if(radix < 0 || number < 0)
+    {
+        printf("EXIT");
+    }
+
+
+    if(radix > 16 || radix < 2)
+    {
+        printf("\n");
+        printf("The radix value should be between 2 and 16.\nPlease retry.\n");
+        continue;
+    }
+
+    printf("The radix you have entered is %d\n", radix);
+
+
+    answer = (log10(number))/(log10(2));
+    printf("The log2 of the number is: %.2f\n", answer);
+
+
+    answer = 0;
+    answer = (double)number/radix;
+    printf("The integer result of the number divided by 2 is %d\n", (int)answer);
+    printf("The remainder is  %d\n", number%radix);
+
+    char *strans;
+    strans = Dec2RadixN(number, radix,siz,stri);//Get answer
+    printf("The radix value is %s\n", strans);
+    free(strans);
+
+}
+
+printf("\nEXIT\n");
+return 0;
+}
