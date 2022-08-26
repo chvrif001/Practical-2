@@ -111,7 +111,7 @@ while(exit != 1){
     answer = 0;
     answer = (double)number/radix;
     printf("The integer result of the number divided by %d",radix); printf(" is %d\n", (int)answer);
-    printf("The remainder is  %d\n", number%radix);
+    printf("The remainder is %d\n", number%radix);
 
     char *strans;
     strans = Dec2RadixN(number, radix,siz,stri);//Get answer
