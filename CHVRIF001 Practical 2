@@ -15,7 +15,7 @@ value = decValue;
 
 while(value > 0)
 {
-    remainder = value % radValue;  //Use the modulo function to get the remainder
+    remainder = value % radValue;  //Use the modulus function to get the remainder
 
     if(remainder >= 0 && remainder <= 9)
     {
@@ -51,13 +51,15 @@ return ans;
 }
 
 int main(){
+#define TITLE "DECIMAL TO RADIX-i converter"
+#define AUTHOR "Chavalala Rifuwo and Sipho Dludlu"
+#define YEAR 2022
 
-printf("******************************\n");
-printf("DECIMAL TO RADIX-i conveter\n");
-printf("Written by: Chavalala Rifuwo\n");
-printf("          : Sipho Dludlu\n");
-printf("Date: 2022\n");
-printf("******************************\n");
+printf("*****************************\n");
+printf("%s\n", TITLE);
+printf("Author: %s\n", AUTHOR);
+printf("Date: %d\n", YEAR);
+printf("*****************************\n");
 
 
 int number = 0;
@@ -72,9 +74,12 @@ while(exit != 1){
     printf("Enter a decimal number: ");
     scanf("%d", &number);
 
-    if(number < 0)
-    {   break;
+    if(radix < 0 || number < 0)
+    {
+        printf("EXIT");
+        break;
     }
+
 
     printf("The number you have entered is %d\n", number);
 
@@ -87,14 +92,13 @@ while(exit != 1){
     if(radix < 0 || number < 0)
     {
         printf("EXIT");
+        break;
     }
 
 
     if(radix > 16 || radix < 2)
     {
-        printf("\n");
-        printf("The radix value should be between 2 and 16.\nPlease retry.\n");
-        continue;
+        break;
     }
 
     printf("The radix you have entered is %d\n", radix);
@@ -106,7 +110,7 @@ while(exit != 1){
 
     answer = 0;
     answer = (double)number/radix;
-    printf("The integer result of the number divided by 2 is %d\n", (int)answer);
+    printf("The integer result of the number divided by %d",radix); printf(" is %d\n", (int)answer);
     printf("The remainder is  %d\n", number%radix);
 
     char *strans;
@@ -116,6 +120,6 @@ while(exit != 1){
 
 }
 
-printf("\nEXIT\n");
+printf("\n");
 return 0;
 }
