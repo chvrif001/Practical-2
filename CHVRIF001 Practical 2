@@ -105,7 +105,7 @@ while(exit != 1){
 
 
     answer = (log10(number))/(log10(2));
-    printf("The log2 of the number is: %.2f\n", answer);
+    printf("The log2 of the number is %.2f\n", answer);
 
 
     answer = 0;
